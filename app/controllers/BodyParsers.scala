@@ -15,23 +15,30 @@ import utilities.Print
 
 trait BodyParsers {
 
-  // hadle file part as Array[Byte]
-  def handleFilePartAsByteArray: PartHandler[FilePart[Array[Byte]]] = {
+  // handle file part as Array[Byte]
+  def handle_File_Part_As_Byte_Array: PartHandler[FilePart[Array[Byte]]] = {
+    //Print.meh("Starting handle_File_Part_As_Byte_Array.")
     val os = new ByteArrayOutputStream()
+
     handleFilePart {
       case FileInfo(partName, filename, contentType) =>
         // simply write the data to the a ByteArrayOutputStream
-        Iteratee.foreach[Array[Byte]] { data =>
-          os.write(data)
+        Iteratee.foreach[Array[Byte]] { data: Array[Byte] =>
+          os.write(data) // This runs in a loop.
+          Print.meh("output stream wrote " + data.length + " bytes.")
         } map { _ =>
           os.close()
-          os.toByteArray
+          val byteArray = os.toByteArray
+          Print.meh("Finishing handle_File_Part_As_Byte_Array. Final length: " + byteArray.length)
+          byteArray
         }
     }
   }
 
   // custom body parser to handle file part as Array[Byte]
-  def multipartFormDataAsBytes: BodyParser[MultipartFormData[Array[Byte]]] =
-    multipartFormData(handleFilePartAsByteArray)
+  def multipart_Form_Data_As_Bytes: BodyParser[MultipartFormData[Array[Byte]]] = {
+    Print.meh("Starting multipart_Form_Data_As_Bytes.")
+    multipartFormData(handle_File_Part_As_Byte_Array)
+  }
 
 }
