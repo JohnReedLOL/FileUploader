@@ -1,0 +1,13 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                 controllers.Application.index
+# Resumable POST endpoint
+POST        /resumable        controllers.Resumable.doPost()
+# Resumable GET endpoint
+GET         /resumable        controllers.Resumable.doGet()
+# Map static resources from the /public folder to the /assets URL path
+GET         /*file            controllers.Assets.at(path="/public", file)
+

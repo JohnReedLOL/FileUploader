@@ -1,0 +1,6 @@
+ 
++   Thread "application-akka.actor.default-dispatcher-3": controllers.Application$$anonfun$index$1.apply(Application.scala:10)
++   Index is running
+
++   Thread "application-akka.actor.default-dispatcher-5": controllers.Application$$anonfun$index$1.apply(Application.scala:10)
++   Index is running
