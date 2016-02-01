@@ -37,7 +37,7 @@ object Resumable extends Controller with BodyParsers {
           request.body.files foreach {
             case FilePart(key, filename, content, bytes) =>
               randomAccessFile.write(bytes)
-              Print.meh("Wrote bytes: " + bytes.length + " to fileName: " + filename)
+            Print.meh("Wrote bytes: " + bytes.length + " to fileName: " + filename)
 
           }
           randomAccessFile.close()
@@ -80,7 +80,7 @@ object Resumable extends Controller with BodyParsers {
             Print.meh("resumableInfo doesn't containsChunk #" + resumableChunkNumber + ". NotFound.")
             NotFound
           }
-        case None => 
+        case None =>
           Print.meh("No resumableInfo from resumableParams. Bad request.")
           BadRequest
 
