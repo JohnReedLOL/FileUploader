@@ -6,7 +6,8 @@ import org.apache.commons.lang3.StringUtils
 
 import scala.collection.mutable
 
-case class ResumableInfo(resumableChunkSize: Int,
+case class ResumableInfo(resumableAuthorName: String,
+                         resumableChunkSize: Int,
                          resumableTotalSize: Long,
                          resumableIdentifier: String,
                          resumableFilename: String,
@@ -17,11 +18,18 @@ case class ResumableInfo(resumableChunkSize: Int,
   val uploadedChunks: mutable.MutableList[Int] = mutable.MutableList[Int]()
 
   def isValid: Boolean = {
-    !(resumableChunkSize < 0 ||
+    !(
+      resumableIdentifier == null ||
+      resumableFilename == null ||
+      resumableRelativePath == null ||
+      resumableAuthorName == null ||
+
+      resumableChunkSize < 0 ||
       resumableTotalSize < 0 ||
       StringUtils.isEmpty(resumableIdentifier) ||
       StringUtils.isEmpty(resumableFilename) ||
-      StringUtils.isEmpty(resumableRelativePath))
+      StringUtils.isEmpty(resumableRelativePath) ||
+      StringUtils.isEmpty(resumableAuthorName) )
   }
 
   def checkIfUploadFinished: Boolean = {

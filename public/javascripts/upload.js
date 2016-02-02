@@ -2,7 +2,7 @@ $(function () {
 
   var resumable = new Resumable({
     target: '/resumable',
-    query:{author_name:'author_name'},
+    query: {authorName:'authorName'},
     simultaneousUploads: 1, // Number of simultaneous uploads
     testChunks: true, // Make a GET request to the server for each chunks to see if it already exists. If implemented on the server-side, this will allow for upload resumes even after a browser crash or even a computer restart.
     maxFiles: 1 // how many files can be uploaded in a single session.
@@ -77,7 +77,7 @@ $(function () {
      const resumableFiles1 = resumable.files // An array of ResumableFile file objects added by the user (see full docs for this object type below).
     const fileName = file.fileName // The name of the file.
      const fileSize = file.size
-     alert("File size is: " + fileSize)
+     alert("File size is: " + fileSize + " bytes.")
      // file.cancel() // Abort uploading the file and delete it from the list of files to upload.
    });
 

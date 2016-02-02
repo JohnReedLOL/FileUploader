@@ -28,6 +28,18 @@ object Resumable extends Controller with BodyParsers {
 
       ResumableInfoStorage.getResumableInfo(resumableParams) match {
         case Some(resumableInfo) =>
+          /*
+          class ResumableInfo(resumableAuthorName: String,
+                    resumableChunkSize: Int,
+                    resumableTotalSize: Long,
+                    resumableIdentifier: String,
+                    resumableFilename: String,
+                    resumableRelativePath: String,
+                    resumableFilePath: String)
+           */
+
+          val authorName = resumableInfo.resumableAuthorName
+          Print.meh("Author name is: " + authorName)
 
           Print.meh("Some(resumableInfo) from resumableParams =>: " + resumableInfo.toString)
 
