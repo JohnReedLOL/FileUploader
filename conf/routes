@@ -4,7 +4,7 @@
 # ~~~~
 
 # Home page
-GET         /                 controllers.Application.index
+GET         /                 controllers.UploaderApplication.index
 # Resumable POST endpoint
 POST        /resumable        controllers.Resumable.doPost()
 # Resumable GET endpoint
