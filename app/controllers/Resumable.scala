@@ -57,6 +57,9 @@ object Resumable extends Controller with BodyParsers {
 
   }
 
+  /**
+    * A GET request to the server for each chunks to see if it already exists
+    */
   def doGet() = {
 
     Print.meh("Starting doGet.")
@@ -74,10 +77,12 @@ object Resumable extends Controller with BodyParsers {
 
           if (resumableInfo.containsChunk(resumableChunkNumber)) {
             Print.meh("resumableInfo containsChunk #" + resumableChunkNumber + ". Ok.")
+            // If this request returns a 200 HTTP code, the chunks is assumed to have been completed.
             Ok
           }
           else {
             Print.meh("resumableInfo doesn't containsChunk #" + resumableChunkNumber + ". NotFound.")
+            // If the request returns anything else, the chunk will be uploaded in the standard fashion.
             NotFound
           }
         case None =>

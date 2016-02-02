@@ -26,7 +26,7 @@ case class ResumableInfo(resumableChunkSize: Int,
 
   def checkIfUploadFinished: Boolean = {
     val count: Int = Math.ceil(resumableTotalSize.toDouble / resumableChunkSize.toDouble).toInt
-    1 until count foreach { i =>
+    1.until(count) foreach { i: Int =>
       if (!uploadedChunks.contains(i)) return false
     }
 
