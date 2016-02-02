@@ -5,7 +5,8 @@ $(function () {
     query: {authorName:'authorName'},
     simultaneousUploads: 1, // Number of simultaneous uploads
     testChunks: true, // Make a GET request to the server for each chunks to see if it already exists. If implemented on the server-side, this will allow for upload resumes even after a browser crash or even a computer restart.
-    maxFiles: 1 // how many files can be uploaded in a single session.
+    maxFiles: 1, // how many files can be uploaded in a single session.
+    fileType: ['pdf', 'jpg', 'mp3', 'mp4'] // The file types allowed to upload. An empty array allow any file type. (Default: [])
   });
 
   if(!resumable.support) {
