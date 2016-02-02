@@ -69,6 +69,7 @@ $(function () {
     console.debug(file);
     alert('fileProgress: ' + file); // Corresponds to 'resumableInfo doesn't containsChunk #1. NotFound.'
     // Also corresponds to completing a post - Upload finished = true. Removed resumableInfo..
+    alert("File progress is: " + file.progress(false) + " /1")
   });
 
    // A new file was added. Happens upon the selection of the file.
